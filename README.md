@@ -20,3 +20,4 @@ This Flashcard App shows a trivia card which contains the answer on its backside
 - [x] Add selectable multiple choice answers beneath the card
 - [x] Change the background color of the multiple choice answers when clicked to indicate whether the question was answered correctly
 - [x] Further customize and style the card
+- [x] Add a button that will toggle hiding and showing the answer choices
