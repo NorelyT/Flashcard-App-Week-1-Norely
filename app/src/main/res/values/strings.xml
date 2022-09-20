@@ -2,4 +2,6 @@
     <string name="app_name">Flashcard App Norely</string>
     <string name="what_animal_can_regenerate_their_limbs">What animal can regenerate their limbs?</string>
     <string name="axolotl">Axolotl</string>
+    <string name="alligator">Alligator</string>
+    <string name="dolphin">Dolphin</string>
 </resources>
