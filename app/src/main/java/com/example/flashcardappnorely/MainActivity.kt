@@ -1,13 +1,16 @@
 package com.example.flashcardappnorely
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 
@@ -101,5 +104,43 @@ class MainActivity : AppCompatActivity() {
             answerOption2.isVisible = !(answerOption2.isVisible)
             answerOption3.isVisible = !(answerOption3.isVisible)
         }
+
+//        findViewById<View>(R.id.addButton).setOnClickListener {
+//            val intent = Intent(this, AddCardActivity::class.java)
+//            startActivity(intent)
+//        }
+
+        val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+        { result ->
+
+            // This code is executed in StartingActivity after we come back from EndingActivity
+
+            // This extracts any data that was passed back from EndingActivity
+            val data: Intent? = result.data
+            // ToDo: Execute more code here
+
+            if (data != null) { // Check that we have data returned
+                val string1 = data.getStringExtra("string1") // 'string1' needs to match the key we used when we put the string in the Intent
+                val string2 = data.getStringExtra("string2")
+
+                question.setText(string1)
+                answer.setText(string2)
+
+                // Log the value of the strings for easier debugging
+                Log.i("MainActivity", "string1: $string1")
+                Log.i("MainActivity", "string2: $string2")
+            } else {
+                Log.i("MainActivity", "Returned null data from AddCardActivity")
+            }
+
+        }
+
+        findViewById<View>(R.id.addButton).setOnClickListener {
+            val intent = Intent(this, AddCardActivity::class.java)
+            // Launch EndingActivity with the resultLauncher so we can execute more code
+            // once we come back here from EndingActivity
+            resultLauncher.launch(intent)
+        }
+
     }
 }

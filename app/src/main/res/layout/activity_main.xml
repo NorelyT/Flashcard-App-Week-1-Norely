@@ -79,4 +79,12 @@
         android:layout_centerHorizontal="true"
         app:srcCompat="@drawable/eyecon_2" />
 
+    <ImageView
+        android:id="@+id/addButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        app:srcCompat="@drawable/add_icon" />
+
 </RelativeLayout>
