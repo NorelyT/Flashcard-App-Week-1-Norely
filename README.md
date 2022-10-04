@@ -1,14 +1,15 @@
+## Flashcard App
+
 ## Lab 2
 
 ### App Description
-`TODO://` Add app description
+Flashcard App is now capable of giving the user the option to put their own custom question and answer to the flashcard so that it displays on the front and backside of the card in the main screen.
 
-### App Walk-though
-`TODO://` Add the URL to your animated app walk-though `gif` in the image tag below. Make sure the gif actually renders and animates when viewing this README. (☝️ Remove this paragraph after after adding gif)
+### App Walk-through
 
-<img src="http://g.recordit.co/qYMsTjIXGp.gif" width=200><br>
+<img src="http://g.recordit.co/INukit1siV.gif" width=200><br>
 
-<img src="http://g.recordit.co/h8lz3wK2pq.gif" width=200><br>
+<img src="http://g.recordit.co/zW3qsG3wYW.gif" width=200><br>
 
 ## Required
 - [x] User can click on a ‘+’ button that takes the user to new ‘Add Card Screen’
@@ -33,7 +34,7 @@
 ### App Description
 This Flashcard App shows a trivia card which contains the answer on its backside, and provides the option of choosing among three possible answers for said trivia question. 
 
-### App Walk-though
+### App Walk-through
 <img src="http://g.recordit.co/fn8yQ5ju1Y.gif" width=200><br>
 
 ## Required
