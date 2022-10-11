@@ -87,4 +87,12 @@
         android:layout_alignParentBottom="true"
         app:srcCompat="@drawable/add_icon" />
 
+    <ImageView
+        android:id="@+id/nextButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        app:srcCompat="@drawable/next_icon" />
+
 </RelativeLayout>
