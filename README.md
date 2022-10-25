@@ -1,5 +1,30 @@
 ## Flashcard App
 
+## Lab 4
+
+### App Description
+Flashcard App now has its own custom launcher icon and incorporates animations/transitions when clicking on the answer, when switching onto the 'Add a Custom Card' screen, and when looking through your set of cards.
+
+### App Walk-though
+
+<img src="http://g.recordit.co/b7jA4kDWqP.gif" width=200><br>
+
+## Required
+- [x] User sees a transition animation when going from the main screen to the add card screen.
+- [x] User sees a reveal animation when the flashcard is tapped and the answer is shown
+- [x] User sees flashcards animating in / out when the 'next' button is tapped
+
+## Optional
+- [x] Extra styling is added!
+- [x] Added a Custom Launcher Icon
+- [ ] User sees a countdown timer for each question
+- [ ] User sees a 'card flip' animation when the card is tapped
+- [ ] User sees a celebration animation with confetti when they answer a question correctly📝 `NOTE` Paste this template at the top of your existing `README.md` file from the last lab.
+
+
+
+## Flashcard App
+
 ## Lab 3
 
 ### App Description
