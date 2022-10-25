@@ -13,7 +13,7 @@
         android:gravity="center"
         android:background="@drawable/card_background1"
         android:elevation="25dp"
-        android:text="@string/what_animal_can_regenerate_their_limbs"
+        android:text="What animal can regenerate their limbs?"
         android:textSize="40sp"
         android:textColor="#E0C8F9" />
 

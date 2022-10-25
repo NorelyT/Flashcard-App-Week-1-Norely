@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewAnimationUtils
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
@@ -51,8 +54,23 @@ class MainActivity : AppCompatActivity() {
 
         // Flips card around from question to answer and from answer to question
         question.setOnClickListener {
+
+            // get the center for the clipping circle
+            val cx = answer.width / 2
+            val cy = answer.height / 2
+
+            // get the final radius for the clipping circle
+            val finalRadius = Math.hypot(cx.toDouble(), cy.toDouble()).toFloat()
+
+            // create the animator for this view (the start radius is zero)
+            val anim = ViewAnimationUtils.createCircularReveal(answer, cx, cy, 0f, finalRadius)
+
+            // hide the question and show the answer to prepare for playing the animation!
             question.visibility = View.INVISIBLE
             answer.visibility = View.VISIBLE
+
+            anim.duration = 800
+            anim.start()
         }
 
         answer.setOnClickListener {
@@ -177,6 +195,8 @@ class MainActivity : AppCompatActivity() {
             // Launch EndingActivity with the resultLauncher so we can execute more code
             // once we come back here from EndingActivity
             resultLauncher.launch(intent)
+            // Code to transition from the MainActivity to the AddCardActivity
+            overridePendingTransition(R.anim.right_in, R.anim.left_out)
         }
 
         findViewById<View>(R.id.nextButton).setOnClickListener {
@@ -190,13 +210,40 @@ class MainActivity : AppCompatActivity() {
 
             // make sure we don't get an IndexOutOfBoundsError if we are viewing the last indexed card in our list
             if (currentCardDisplayedIndex >= allFlashcards.size){
+//                flashcardDatabase.deleteCard(allFlashcards[allFlashcards.size - 1].question)
+//                allFlashcards = flashcardDatabase.getAllCards().toMutableList()
                 currentCardDisplayedIndex = 0
             }
+
+            // Saves the animation resource file for the next-card transition
+            val leftOutAnim = AnimationUtils.loadAnimation(it.getContext(), R.anim.left_out)
+            val rightInAnim = AnimationUtils.loadAnimation(it.getContext(), R.anim.right_in)
+
+            leftOutAnim.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationStart(animation: Animation?) {
+                    // this method is called when the animation first starts
+                    question.startAnimation(leftOutAnim)
+                }
+
+                override fun onAnimationEnd(animation: Animation?) {
+                    // this method is called when the animation is finished playing
+                    question.startAnimation(rightInAnim)
+                }
+
+                override fun onAnimationRepeat(animation: Animation?) {
+                    // we don't need to worry about this method
+                }
+            })
+
+            // Sets the duration of the next-card animation
+            leftOutAnim.duration = 150
+
+            // Starts the animation for the next card
+            question.startAnimation(leftOutAnim)
 
             // set the question and answer TextViews with data from the database
             question.setText(allFlashcards[currentCardDisplayedIndex].question)
             answer.setText(allFlashcards[currentCardDisplayedIndex].answer)
         }
-
     }
 }
